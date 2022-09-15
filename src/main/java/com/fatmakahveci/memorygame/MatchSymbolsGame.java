@@ -1,3 +1,5 @@
+package com.fatmakahveci.memorygame;
+
 import java.util.Scanner;
 
 public class MatchSymbolsGame {
@@ -11,10 +13,10 @@ public class MatchSymbolsGame {
 		this.gameBoard = new Board(rows, cols);
 		this.player1 = new Player("Player 1");
 		this.player2 = new Player("Player 2");
-		this.winScore = (rows*cols)/2-1;
+		this.winScore = (rows * cols) / 2 - 1;
 		this.in = in;
 	}
-	
+
 	public Position userInput() {
 		while (true) {
 			System.out.print("Enter cell row: ");
@@ -29,10 +31,10 @@ public class MatchSymbolsGame {
 				System.out.println("Cell is already open. Try another cell.\n");
 			} else {
 				return pos;
-			}				
-		} 
+			}
+		}
 	}
-	
+
 	public Player move(Player player) {
 		System.out.println(player.getName() + " is playing...\n");
 		Position pos1 = userInput();
@@ -48,8 +50,9 @@ public class MatchSymbolsGame {
 			return player == player1 ? player2 : player1;
 		}
 	}
-	
+
 	public void play() {
+		gameBoard.initBoard();
 		System.out.println(gameBoard);
 		Player turn = player1;
 		while (true) {
@@ -60,7 +63,7 @@ public class MatchSymbolsGame {
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		System.out.print("Enter the number of rows: ");

@@ -1,3 +1,5 @@
+package com.fatmakahveci.memorygame;
+
 public class Cell {
 
 	boolean open;
