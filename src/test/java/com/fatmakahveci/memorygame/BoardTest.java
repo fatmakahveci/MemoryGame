@@ -5,19 +5,46 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-/**
- * Unit test for simple App.
- */
 public class BoardTest {
 
     @Test(expected = IllegalArgumentException.class)
-    public void testGameInitFailOnInvalidSizes() {
+    public void testGameInitFailOnInvalidOddSizes() {
         new Board(3, 5);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGameInitFailOnInvalidZeroSizes() {
+        new Board(0, 0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGameInitFailOnInvalidNegativeRowSizes() {
+        new Board(-1, 2);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGameInitFailOnInvalidNegativeColSizes() {
+        new Board(1, -2);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGameInitExceedMaximumSizes() {
+        new Board(26, 26);
     }
 
     @Test
     public void testGameInitSuccessOnValidSizes() {
         new Board(2, 4);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testUnitializedBoardWithValidSize() {
+        new Board(new Cell[2][4]);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGameInitSuccessOnInvalidSizesCellConstructor() {
+        new Board(new Cell[3][3]);
     }
 
     @Test
@@ -35,7 +62,6 @@ public class BoardTest {
         board.open(pos1);
         board.open(pos2);
         boolean match = board.play(pos1, pos2);
-
         assertTrue(match);
         assertFalse(board.isPlayable(pos1));
         assertFalse(board.isPlayable(pos2));

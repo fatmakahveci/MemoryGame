@@ -11,6 +11,13 @@ public class Board {
 	public Board(Cell[][] board) {
 		checkBoardSize(board.length, board[0].length);
 		this.board = board;
+		for (int row = 0; row < board.length; row++) {
+			for (int col = 0; col < board[0].length; col++) {
+				if (board[row][col] == null) {
+					throw new IllegalArgumentException("Empty cell (row:" + row + ",col:" + col + ")");
+				}
+			}
+		}
 	}
 
 	public Board(int rows, int cols) {
@@ -19,7 +26,7 @@ public class Board {
 	}
 
 	public void checkBoardSize(int rows, int cols) {
-		if ((rows <= 0) || (cols <= 0) || (rows % 2 == 1) || (cols % 2 == 1) || (rows * cols > 52)) {
+		if ((rows <= 0) || (cols <= 0) || ((rows * cols) % 2 == 1) || (rows * cols > 52)) {
 			throw new IllegalArgumentException(
 					"The size of the board is not valid. 0 < board size <= 52 and (rows and cols must be positive even integers)");
 		}

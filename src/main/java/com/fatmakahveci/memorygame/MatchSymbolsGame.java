@@ -3,28 +3,26 @@ package com.fatmakahveci.memorygame;
 import java.util.Scanner;
 
 public class MatchSymbolsGame {
+
 	private Board gameBoard;
 	private Player player1;
 	private Player player2;
 	private final int winScore;
-	private Scanner in;
+	private Input in;
+	private Player turn;
 
-	public MatchSymbolsGame(int rows, int cols, Scanner in) {
-		this.gameBoard = new Board(rows, cols);
-		this.player1 = new Player("Player 1");
-		this.player2 = new Player("Player 2");
-		this.winScore = (rows * cols) / 2 - 1;
+	public MatchSymbolsGame(Board gameBoard, Player player1, Player player2, int winScore, Input in) {
+		this.gameBoard = gameBoard;
+		this.player1 = player1;
+		this.player2 = player2;
+		this.winScore = winScore;
 		this.in = in;
+		this.turn = player1;
 	}
 
 	public Position userInput() {
 		while (true) {
-			System.out.print("Enter cell row: ");
-			int row = in.nextInt();
-			System.out.print("Enter cell col: ");
-			int col = in.nextInt();
-			System.out.println();
-			Position pos = new Position(row, col);
+			Position pos = in.nextPositionInput();
 			if (!gameBoard.isCellValid(pos)) {
 				System.out.println("Cell position is not valid. Try again...\n");
 			} else if (!gameBoard.isPlayable(pos)) {
@@ -35,8 +33,8 @@ public class MatchSymbolsGame {
 		}
 	}
 
-	public Player move(Player player) {
-		System.out.println(player.getName() + " is playing...\n");
+	public void playOnce() {
+		System.out.println(turn.getName() + " is playing...\n");
 		Position pos1 = userInput();
 		gameBoard.open(pos1);
 		System.out.println(gameBoard);
@@ -44,24 +42,19 @@ public class MatchSymbolsGame {
 		gameBoard.open(pos2);
 		System.out.println(gameBoard);
 		if (gameBoard.play(pos1, pos2)) {
-			player.increaseScore();
-			return player;
+			turn.increaseScore();
 		} else {
-			return player == player1 ? player2 : player1;
+			turn = turn == player1 ? player2 : player1;
 		}
 	}
 
 	public void play() {
 		gameBoard.initBoard();
 		System.out.println(gameBoard);
-		Player turn = player1;
-		while (true) {
-			turn = move(turn);
-			if (turn.hasWon(winScore)) {
-				System.out.println(turn.getName() + " has won the game!");
-				return;
-			}
+		while (!turn.hasWon(winScore)) {
+			playOnce();
 		}
+		System.out.println(turn.getName() + " has won the game!");
 	}
 
 	public static void main(String[] args) {
@@ -71,7 +64,13 @@ public class MatchSymbolsGame {
 		System.out.print("Enter the number of cols: ");
 		final int cols = in.nextInt();
 
-		MatchSymbolsGame game = new MatchSymbolsGame(rows, cols, in);
+		Board board = new Board(rows, cols);
+		Player player1 = new Player("Player 1");
+		Player player2 = new Player("Player 2");
+		int winScore = (rows * cols) / 2;
+		Input input = new ScannerInput(in);
+
+		MatchSymbolsGame game = new MatchSymbolsGame(board, player1, player2, winScore, input);
 		game.play();
 	}
 }

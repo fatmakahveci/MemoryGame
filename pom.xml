@@ -70,7 +70,7 @@
           <version>3.0.0</version>
         </plugin>
 
-        <plugin>
+        <!-- <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
           <configuration>
@@ -83,7 +83,7 @@
                   </manifest>
               </archive>
           </configuration>
-        </plugin>
+        </plugin> -->
 
        <!--  <plugin>
           <groupId>org.apache.maven.plugins</groupId>
