@@ -6,4 +6,27 @@
 
 # MemoryGame
 
-## Getting started
+A simple memory game written in Java and tested with JUnit.
+
+## Requirements
+
+- [Java 18+](https://www.oracle.com/java/technologies/javase/jdk18-archive-downloads.html)
+- [Maven 3.8.6](https://maven.apache.org/install.html)
+
+## Installation
+
+```bash
+git clone https://github.com/fatmakahveci/MemoryGame.git
+cd MemoryGame
+mvn clean install
+```
+
+## How to play
+
+## Demo
+
+You can see a quick demo below.
+
+---
+
+Its source code is available with the Apache license and contributions are welcome.
