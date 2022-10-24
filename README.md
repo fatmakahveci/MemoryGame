@@ -6,7 +6,11 @@
 
 # Memory Game
 
-A simple card game written in Java and tested with JUnit.
+A simple card game to to practice Java and JUnit.
+
+## Demo
+
+![demo.gif](demo.gif)
 
 ## Requirements
 
@@ -21,19 +25,6 @@ cd MemoryGame
 mvn clean install
 java -jar target/memorygame-1.0-SNAPSHOT.jar
 ```
-
-## Test
-
-```bash
-mvn clean test
-mvn clean test -e # -e := run tests with full stack trace on failures
-```
-
-## Demo
-
----
-
-![demo.gif](demo.gif)
 
 ---
 
