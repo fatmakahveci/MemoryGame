@@ -22,6 +22,13 @@ mvn clean install
 java -jar target/memorygame-1.0-SNAPSHOT.jar
 ```
 
+## Test
+
+```bash
+mvn clean test
+mvn clean test -e # -e := run tests with full stack trace on failures
+```
+
 ## How to play
 
 ## Demo
