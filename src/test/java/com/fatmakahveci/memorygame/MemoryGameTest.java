@@ -6,7 +6,7 @@ import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MatchSymbolsGameTest {
+public class MemoryGameTest {
     private Board board = mock(Board.class);
     private Input in = mock(Input.class);
     private int winScore = 2 * 2 / 2;
@@ -14,7 +14,7 @@ public class MatchSymbolsGameTest {
     private Player player2 = new Player("Player 2");
     private Position position1 = new Position(0, 0);
     private Position position2 = new Position(1, 1);
-    private MatchSymbolsGame game = new MatchSymbolsGame(board, player1, player2, winScore, in);
+    private MemoryGame game = new MemoryGame(board, player1, player2, winScore, in);
 
     @Before
     public void setUp() {

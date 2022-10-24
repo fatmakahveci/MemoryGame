@@ -2,7 +2,7 @@ package com.fatmakahveci.memorygame;
 
 import java.util.Scanner;
 
-public class MatchSymbolsGame {
+public class MemoryGame {
 
 	private Board board;
 	private Player player1;
@@ -11,7 +11,7 @@ public class MatchSymbolsGame {
 	private Input in;
 	private Player turn;
 
-	public MatchSymbolsGame(Board board, Player player1, Player player2, int winScore, Input in) {
+	public MemoryGame(Board board, Player player1, Player player2, int winScore, Input in) {
 		this.board = board;
 		this.player1 = player1;
 		this.player2 = player2;
@@ -74,7 +74,7 @@ public class MatchSymbolsGame {
 		int winScore = (rows * cols) / 2;
 		Input input = new ScannerInput(in);
 
-		MatchSymbolsGame game = new MatchSymbolsGame(board, player1, player2, winScore, input);
+		MemoryGame game = new MemoryGame(board, player1, player2, winScore, input);
 		game.play();
 	}
 }
