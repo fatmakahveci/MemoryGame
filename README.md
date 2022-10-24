@@ -29,8 +29,6 @@ mvn clean test
 mvn clean test -e # -e := run tests with full stack trace on failures
 ```
 
-## How to play
-
 ## Demo
 
 You can see a quick demo below.
