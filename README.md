@@ -31,7 +31,9 @@ mvn clean test -e # -e := run tests with full stack trace on failures
 
 ## Demo
 
-You can see a quick demo below.
+---
+
+![demo.gif](demo.gif)
 
 ---
 
