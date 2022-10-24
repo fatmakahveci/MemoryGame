@@ -19,6 +19,7 @@ A simple memory game written in Java and tested with JUnit.
 git clone https://github.com/fatmakahveci/MemoryGame.git
 cd MemoryGame
 mvn clean install
+java -jar target/memorygame-1.0-SNAPSHOT.jar
 ```
 
 ## How to play
