@@ -29,6 +29,12 @@ mvn clean install
 java -jar target/memorygame-1.0-SNAPSHOT.jar
 ```
 
+## Test
+
+```bash
+mvn clean test
+```
+
 ---
 
 Its source code is available with the Apache license and contributions are welcome.
