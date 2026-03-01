@@ -2,7 +2,7 @@
 
 # Memory Game
 
-Terminal memory card game in Java focused on testable design and clean architecture.
+Terminal memory card game in Java designed around testable architecture, dependency injection and clean separation between game engine and UI.
 
 This project is not just a game — it is a small exercise in writing **testable and modular software**.
 The goal was to separate game rules, input/output, and board logic so the core behaviour can be tested independently from the console.
@@ -37,6 +37,19 @@ This allows the program to be tested without manual interaction.
 - clean separation between UI and game logic
 - deterministic unit tests using mocked input
 - error handling for invalid positions
+
+---
+
+## Architecture
+
+The project separates responsibilities into distinct layers:
+
+- **GameEngine** → game rules, scoring, turn handling
+- **Board** → board state and matching logic
+- **ConsoleUI** → user interaction and rendering
+- **Input abstraction** → allows mocking user interaction in tests
+
+This design allows the core game logic to be tested without any console input.
 
 ---
 
