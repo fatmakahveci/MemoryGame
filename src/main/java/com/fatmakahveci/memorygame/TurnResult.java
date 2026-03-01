@@ -8,5 +8,8 @@ public record TurnResult(
         Player nextTurn,
         int player1Score,
         int player2Score,
-        boolean gameOver) {
+        boolean gameOver,
+        int moves,
+        int matches,
+        double accuracyPercent) {
 }

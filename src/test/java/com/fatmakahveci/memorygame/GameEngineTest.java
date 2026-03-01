@@ -25,9 +25,9 @@ public class GameEngineTest {
 
     @Test
     public void testPlayMoveWithMatch_IncreasesScoreAndKeepsTurn() {
-        Board board = presetBoard(new char[][]{
-                {'X', 'A'},
-                {'B', 'X'}
+        Board board = presetBoard(new char[][] {
+                { 'X', 'A' },
+                { 'B', 'X' }
         });
 
         GameEngine engine = new GameEngine(board, player1, player2, WIN_SCORE);
@@ -44,13 +44,18 @@ public class GameEngineTest {
         // match => current player keeps the turn
         assertEquals(player1, engine.currentPlayer());
         assertEquals(player1, result.nextTurn());
+
+        // stats
+        assertEquals(1, engine.moves());
+        assertEquals(1, engine.matches());
+        assertEquals(100.0, engine.accuracyPercent(), 0.0001);
     }
 
     @Test
     public void testPlayMoveWithoutMatch_SwitchesTurnAndKeepsScores() {
-        Board board = presetBoard(new char[][]{
-                {'A', 'X'},
-                {'Y', 'B'}
+        Board board = presetBoard(new char[][] {
+                { 'A', 'X' },
+                { 'Y', 'B' }
         });
 
         GameEngine engine = new GameEngine(board, player1, player2, WIN_SCORE);
@@ -67,13 +72,18 @@ public class GameEngineTest {
         // mismatch => turn switches
         assertEquals(player2, engine.currentPlayer());
         assertEquals(player2, result.nextTurn());
+
+        // stats
+        assertEquals(1, engine.moves());
+        assertEquals(0, engine.matches());
+        assertEquals(0.0, engine.accuracyPercent(), 0.0001);
     }
 
     @Test
     public void testGameOver_WhenCurrentPlayerReachesWinScore() {
-        Board board = presetBoard(new char[][]{
-                {'Z', 'A'},
-                {'B', 'Z'}
+        Board board = presetBoard(new char[][] {
+                { 'Z', 'A' },
+                { 'B', 'Z' }
         });
 
         GameEngine engine = new GameEngine(board, player1, player2, WIN_SCORE);
@@ -86,6 +96,11 @@ public class GameEngineTest {
         assertTrue(engine.isGameOver());
         assertTrue(result.gameOver());
         assertTrue(player1.hasWon(WIN_SCORE));
+
+        // stats
+        assertEquals(1, engine.moves());
+        assertEquals(1, engine.matches());
+        assertEquals(100.0, engine.accuracyPercent(), 0.0001);
     }
 
     private static Board presetBoard(char[][] symbols) {

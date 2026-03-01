@@ -1,3 +1,5 @@
+![CI](https://github.com/fatmakahveci/MemoryGame/actions/workflows/ci.yml/badge.svg)
+
 # Memory Game
 
 Terminal memory card game in Java focused on testable design and clean architecture.
@@ -19,10 +21,10 @@ Many beginner Java projects tightly couple game logic with user input, which mak
 
 In this project:
 
-* the game rules are independent from the console
-* input is abstracted behind an interface
-* the board logic is unit tested
-* user interaction can be mocked in tests
+- the game rules are independent from the console
+- input is abstracted behind an interface
+- the board logic is unit tested
+- user interaction can be mocked in tests
 
 This allows the program to be tested without manual interaction.
 
@@ -30,11 +32,11 @@ This allows the program to be tested without manual interaction.
 
 ## Features
 
-* turn-based memory card matching game
-* configurable board size
-* clean separation between UI and game logic
-* deterministic unit tests using mocked input
-* error handling for invalid positions
+- turn-based memory card matching game
+- configurable board size
+- clean separation between UI and game logic
+- deterministic unit tests using mocked input
+- error handling for invalid positions
 
 ---
 
@@ -56,8 +58,8 @@ The `Input` interface allows the game to run without a real user during tests.
 
 ## Requirements
 
-* Java 21+
-* Maven
+- Java 21+
+- Maven
 
 ---
 
@@ -107,10 +109,10 @@ This pattern is similar to dependency injection and is commonly used in backend 
 
 ## Possible improvements
 
-* scoring system
-* multiple players
-* GUI (Swing/JavaFX)
-* persistent high scores
+- scoring system
+- multiple players
+- GUI (Swing/JavaFX)
+- persistent high scores
 
 ---
 
@@ -120,4 +122,10 @@ Apache License 2.0
 
 ---
 
+✅ Coverage report is generated with JaCoCo and uploaded as a GitHub Actions artifact on every push.
+
+---
+
 Contributions, suggestions and improvements are welcome.
+
+---

@@ -27,6 +27,9 @@ public class ConsoleUI {
         System.out.println(winner.getName() + " has won the game!");
         System.out.println("Final Score: " + engine.player1().getName() + " " + engine.player1().getScore()
                 + " - " + engine.player2().getScore() + " " + engine.player2().getName());
+        System.out.println("Moves: " + engine.moves()
+                + " | Matches: " + engine.matches()
+                + " | Accuracy: " + String.format("%.1f", engine.accuracyPercent()) + "%");
     }
 
     private void playRound() {
@@ -56,6 +59,9 @@ public class ConsoleUI {
         System.out.println("Turn: " + turn.getName()
                 + " | Score: " + engine.player1().getName() + " " + engine.player1().getScore()
                 + " - " + engine.player2().getScore() + " " + engine.player2().getName());
+        System.out.println("Moves: " + engine.moves()
+                + " | Matches: " + engine.matches()
+                + " | Accuracy: " + String.format("%.1f", engine.accuracyPercent()) + "%");
         System.out.println("==================================\n");
     }
 
