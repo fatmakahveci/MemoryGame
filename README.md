@@ -1,6 +1,6 @@
 # Memory Game
 
-A terminal-based memory card game written in Java.
+Terminal memory card game in Java focused on testable design and clean architecture.
 
 This project is not just a game — it is a small exercise in writing **testable and modular software**.
 The goal was to separate game rules, input/output, and board logic so the core behaviour can be tested independently from the console.
