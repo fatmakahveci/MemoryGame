@@ -11,6 +11,15 @@ public class ScannerInput implements Input {
     }
 
     @Override
+    public String nextLine() {
+        String line = in.nextLine();
+        if (line.isEmpty()) {
+            line = in.nextLine();
+        }
+        return line;
+    }
+
+    @Override
     public Position nextPositionInput() {
         System.out.print("Enter cell row: ");
         int row = in.nextInt();
