@@ -139,6 +139,18 @@ Apache License 2.0
 
 ---
 
+## What I learned
+
+This project focuses on writing testable code rather than just making the game work.
+
+Key takeaways:
+- separating business logic from UI
+- designing for unit testing
+- deterministic tests with controlled input
+- small but maintainable architecture
+
+---
+
 Contributions, suggestions and improvements are welcome.
 
 ---
