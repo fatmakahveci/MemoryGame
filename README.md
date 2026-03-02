@@ -2,12 +2,21 @@
 
 # Memory Game
 
-Terminal memory card game in Java designed around testable architecture, dependency injection and clean separation between game engine and UI.
+A terminal-based memory card matching game designed as an exercise in testable architecture and separation of concerns.
 
-This project is not just a game — it is a small exercise in writing **testable and modular software**.
-The goal was to separate game rules, input/output, and board logic so the core behaviour can be tested independently from the console.
+Unlike typical console games, the game logic is completely independent from user input and output, allowing the core behaviour to be unit tested automatically.
 
----
+## Key Idea
+
+Most beginner console applications directly read from Scanner, which tightly couples the UI to the game rules.
+
+In this project:
+- the game engine contains no console code
+- user input is abstracted behind an interface
+- UI is replaceable
+- the core behaviour can be tested deterministically
+
+This mirrors real backend service design, where side effects must be isolated.
 
 ## Demo
 
@@ -48,8 +57,22 @@ The project separates responsibilities into distinct layers:
 - **Board** → board state and matching logic
 - **ConsoleUI** → user interaction and rendering
 - **Input abstraction** → allows mocking user interaction in tests
+- **Position** → immutable coordinates
+- **ScannerInput** → console implementation
 
 This design allows the core game logic to be tested without any console input.
+
+---
+
+## Tech Stack
+
+- JavaScript (Vanilla)
+- HTML5
+- CSS3
+- Maven
+- JUnit
+- JaCoCo (coverage)
+- GitHub Actions (CI)
 
 ---
 
@@ -105,27 +128,43 @@ java -jar target/memorygame-1.0-SNAPSHOT.jar
 mvn test
 ```
 
-The tests use mocked input to simulate player actions and verify game behaviour.
+Tests simulate player actions using mocked input and verify the game rules automatically.
+
+Coverage reports are generated with JaCoCo on every push via CI.
 
 ---
 
-## Design notes
+## Design Decision: Input Abstraction
 
-The main design decision was introducing an `Input` interface.
+Instead of reading directly from Scanner inside the game logic, an Input interface is injected into the game.
 
-Instead of reading directly from `Scanner` inside the game logic, user interaction is injected into the game.
-This makes it possible to test the game automatically and verify edge cases such as invalid input or repeated moves.
+This enables:
+- automated testing
+- reproducible edge cases
+- isolation of side effects
+- replaceable UI (console → GUI)
 
-This pattern is similar to dependency injection and is commonly used in backend services to isolate side effects.
+This pattern is equivalent to dependency injection used in backend services.
+
+---
+
+## Project Structure
+MemoryGame/
+ ├── index.html
+ ├── style.css
+ └── script.js
 
 ---
 
 ## Possible improvements
 
 - scoring system
-- multiple players
+- multiplayer support
 - GUI (Swing/JavaFX)
 - persistent high scores
+- timer, difficulty levels and leaderboard
+- store scores in localStorage
+- convert to React version
 
 ---
 
@@ -141,13 +180,18 @@ Apache License 2.0
 
 ## What I learned
 
-This project focuses on writing testable code rather than just making the game work.
+This project focuses on writing testable code rather than just making the game work. It focuses on front-end logic rather than visuals.
 
 Key takeaways:
-- separating business logic from UI
-- designing for unit testing
-- deterministic tests with controlled input
-- small but maintainable architecture
+- managing UI state
+- handling user events
+- preventing race conditions (double click issues)
+- organizing client-side logic
+- designing for testability
+- separating domain logic from infrastructure
+- mocking side effects
+- writing deterministic unit tests
+- structuring a maintainable codebase
 
 ---
 
