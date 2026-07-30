@@ -71,7 +71,7 @@ The `Input` interface allows the game to run without a real user during tests.
 
 ## Requirements
 
-- Java 21+
+- Java 25+
 - Maven
 
 ---
