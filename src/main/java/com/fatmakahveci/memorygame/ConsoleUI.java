@@ -73,7 +73,13 @@ public class ConsoleUI {
 
     private Position readValidPosition() {
         while (true) {
-            Position position = in.nextPositionInput();
+            Position position;
+            try {
+                position = in.nextPositionInput();
+            } catch (RuntimeException e) {
+                System.out.println("Invalid input detected. Please enter valid numeric coordinates.\n");
+                continue;
+            }
 
             if (!engine.board().isCellValid(position)) {
                 System.out.println("Cell position is not valid. " + validRangeMessage());

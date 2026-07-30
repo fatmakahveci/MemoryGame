@@ -5,20 +5,20 @@ import java.util.Scanner;
 public class MemoryGame {
 
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
+		try (Scanner scanner = new Scanner(System.in)) {
+			GameSettings settings = readSettings(scanner);
 
-		GameSettings settings = readSettings(scanner);
+			Board board = new Board(settings.rows(), settings.cols());
+			Player player1 = new Player("Player 1");
+			Player player2 = new Player("Player 2");
 
-		Board board = new Board(settings.rows(), settings.cols());
-		Player player1 = new Player("Player 1");
-		Player player2 = new Player("Player 2");
+			Input input = new ScannerInput(scanner);
 
-		Input input = new ScannerInput(scanner);
+			GameEngine engine = new GameEngine(board, player1, player2, settings.winScore());
+			ConsoleUI ui = new ConsoleUI(engine, input);
 
-		GameEngine engine = new GameEngine(board, player1, player2, settings.winScore());
-		ConsoleUI ui = new ConsoleUI(engine, input);
-
-		ui.run();
+			ui.run();
+		}
 	}
 
 	private static GameSettings readSettings(Scanner scanner) {

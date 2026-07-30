@@ -142,6 +142,17 @@ public class Board {
 	}
 
 	public boolean play(Position pos1, Position pos2) {
+		Objects.requireNonNull(pos1, "pos1 must not be null");
+		Objects.requireNonNull(pos2, "pos2 must not be null");
+
+		if (pos1.equals(pos2)) {
+			throw new IllegalArgumentException("Cannot play the same cell twice.");
+		}
+
+		if (!isCellValid(pos1) || !isCellValid(pos2)) {
+			throw new IllegalArgumentException("Both positions must be within board bounds.");
+		}
+
 		boolean match = board[pos1.row()][pos1.col()]
 				.isSameWith(board[pos2.row()][pos2.col()]);
 

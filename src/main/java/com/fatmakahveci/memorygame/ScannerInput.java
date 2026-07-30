@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ScannerInput implements Input {
 
-    private Scanner in;
+    private final Scanner in;
 
     public ScannerInput(Scanner in) {
         this.in = in;
@@ -13,7 +13,7 @@ public class ScannerInput implements Input {
     @Override
     public String nextLine() {
         String line = in.nextLine();
-        if (line.isEmpty()) {
+        while (line.isEmpty()) {
             line = in.nextLine();
         }
         return line;
@@ -21,11 +21,35 @@ public class ScannerInput implements Input {
 
     @Override
     public Position nextPositionInput() {
-        System.out.print("Enter cell row: ");
-        int row = in.nextInt();
-        System.out.print("Enter cell col: ");
-        int col = in.nextInt();
-        System.out.println();
-        return new Position(row, col);
+        while (true) {
+            System.out.print("Enter cell row: ");
+            Integer row = parseIntInput(in.nextLine());
+            if (row == null) {
+                System.out.println("Invalid row. Please enter a whole number.\n");
+                continue;
+            }
+
+            System.out.print("Enter cell col: ");
+            Integer col = parseIntInput(in.nextLine());
+            if (col == null) {
+                System.out.println("Invalid col. Please enter a whole number.\n");
+                continue;
+            }
+
+            System.out.println();
+            return new Position(row, col);
+        }
+    }
+
+    private Integer parseIntInput(String text) {
+        if (text == null || text.isBlank()) {
+            return null;
+        }
+
+        try {
+            return Integer.parseInt(text.trim());
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 }

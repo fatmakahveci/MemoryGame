@@ -109,6 +109,30 @@ The tests use mocked input to simulate player actions and verify game behaviour.
 
 ---
 
+## Example Usage
+
+Start the game locally and follow the prompts to select rows and columns for each move:
+
+```bash
+mvn package
+java -jar target/memorygame-1.0-SNAPSHOT.jar
+```
+
+The game will prompt for board dimensions and then ask players to pick cells by row and column.
+
+---
+
+## Contributing
+
+Contributions are welcome!
+
+- Fork the repository and create a new branch for your changes.
+- Add tests for any behavior you change or add.
+- Keep game logic separate from UI behavior where possible.
+- Open a pull request with a short description of the improvement.
+
+---
+
 ## Design notes
 
 The main design decision was introducing an `Input` interface.
