@@ -1,6 +1,9 @@
-![CI](https://github.com/fatmakahveci/MemoryGame/actions/workflows/ci.yml/badge.svg)
-
 # Memory Game
+
+[![CI](https://github.com/fatmakahveci/MemoryGame/actions/workflows/ci.yml/badge.svg)](https://github.com/fatmakahveci/MemoryGame/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/fatmakahveci/MemoryGame?display_name=tag&sort=semver)](https://github.com/fatmakahveci/MemoryGame/releases)
+[![Java](https://img.shields.io/badge/Java-Maven-ED8B00?logo=openjdk&logoColor=white)](https://www.java.com/)
+[![License](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE.md)
 
 A terminal-based memory card matching game designed as an exercise in testable architecture and separation of concerns.
 
