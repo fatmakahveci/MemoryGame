@@ -225,3 +225,10 @@ Key takeaways:
 Contributions, suggestions and improvements are welcome.
 
 ---
+
+## Project Resources
+
+- [Changelog](CHANGELOG.md)
+- [Contributing guide](.github/CONTRIBUTING.md)
+- [Security policy](.github/SECURITY.md)
+- [License](LICENSE.md)
