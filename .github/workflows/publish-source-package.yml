@@ -20,6 +20,7 @@ concurrency:
 
 jobs:
   publish:
+    timeout-minutes: 60
     name: Publish OCI source package
     runs-on: ubuntu-latest
     steps:
